@@ -86,10 +86,25 @@ class LinkedList(object):
         current = self.head
         if(current == None):
             return False
-        elif(self.getLength() < 3):
-            while(current.getData())
+        while(current.getNext() != None):
+            if(current.getData() == item):
+                return True
+            current = current.getNext()
+        return False
 
-    #def delete(self, item):
+    def delete(self, item):
+        current = self.head
+        previous = None
+        while(current != None):
+            if(previous == None and current.getData() == item):
+                self.head = current.getNext()
+                return
+            elif(current.getData() == item):
+                previous.setNext(current.getNext())
+                return
+            previous = current
+            current = current.getNext()
+
 
     def __str__(self):
 
@@ -106,7 +121,15 @@ class LinkedList(object):
                 current = current.getNext()
         return(newString)
 
-    #def copyLIst(self):
+    def copyList(self):
+        current = self.head
+        if(current == None):
+            return None
+        copyList = Node(current.getData())
+        while(current != None):
+            current = current.getNext()
+            copyList.setNext(current)
+        return copyList
 
     #def reverseList(self):
 
